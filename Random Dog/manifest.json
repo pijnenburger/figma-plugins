@@ -1,0 +1,10 @@
+{
+    "name": "Random Dog",
+    "id": "1139563035490979595",
+    "api": "1.0.0",
+    "main": "code.js",
+    "editorType": [
+        "figma"
+    ],
+    "ui": "ui.html"
+}

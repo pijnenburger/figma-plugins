@@ -1,0 +1,105 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/thomas-lowry/figma-plugin-ds/dist/figma-plugin-ds.css">
+
+<!-- <h2>Rectangle Creator</h2>
+<p>Count: <input id="count" value="5"></p>
+<button id="create">Create</button>
+<button id="cancel">Cancel</button>
+<script>
+
+document.getElementById('create').onclick = () => {
+  const textbox = document.getElementById('count');
+  const count = parseInt(textbox.value, 10);
+  parent.postMessage({ pluginMessage: { type: 'create-rectangles', count } }, '*')
+}
+
+document.getElementById('cancel').onclick = () => {
+  parent.postMessage({ pluginMessage: { type: 'cancel' } }, '*')
+}
+
+</script> -->
+
+<style>
+    body {
+        padding: 2rem;
+    }
+    
+    div {
+        margin: 1rem 0;
+    }
+    
+    input {
+        display: block;
+    }
+    
+    input:nth-last-child(n+2) {
+        margin-bottom: 16px;
+    }
+    
+    .label {
+        padding: 0;
+    }
+    
+    .radio__button {
+        display: block;
+        height: 32px;
+    }
+</style>
+
+<h1>Petma plugin</h1>
+
+<div class="form">
+    <label class="label" for="name">Name</label>
+    <input id="name" type="text" value="Fred Raket">
+
+    <label class="label" for="username">Username</label>
+    <input id="username" type="text" value="freddyR">
+
+
+    <label class="label" for="description">Description</label>
+    <input id="description" type="textarea" value="This plugin is amazing. Everybody should be able to build a plugin in figma, it's the bomb.">
+
+    <div class="radio_label">
+    </div><label class="label" for="radioGroup">Image</label>
+    <div class="radio">
+
+        <input id="radioButton1" type="radio" class="radio__button" value="1" name="radioGroup">
+        <label for="radioButton1" class="radio__label">No image</label>
+
+        <input id="radioButton2" type="radio" class="radio__button" value="2" name="radioGroup" checked>
+        <label for="radioButton2" class="radio__label">Single image</label>
+
+        <input id="radioButton3" type="radio" class="radio__button" value="3" name="radioGroup">
+        <label for="radioButton3" class="radio__label">Carousel</label>
+    </div>
+</div>
+
+<div class="switch">
+    <input id="dark-mode-on" class="switch__toggle" type="checkbox">
+    <label class="switch__label" for="dark-mode-on">Dark mode</label>
+</div>
+
+<div>
+    <button class="button button--primary" id="submit-post">Submit</button>
+</div>
+
+</div>
+
+<script>
+    document.getElementById('submit-post').onclick = () => {
+        const name = document.getElementById('name').value;
+        const username = document.getElementById('username').value;
+        const description = document.getElementById('description').value;
+        const darkModeState = document.getElementById('dark-mode-on').checked;
+        const imageVariant = document.querySelector('input[name="radioGroup"]:checked').value;
+
+        parent.postMessage({
+            pluginMessage: {
+                name,
+                username,
+                description,
+                darkModeState,
+                imageVariant
+            }
+        }, '*')
+    }
+</script>
